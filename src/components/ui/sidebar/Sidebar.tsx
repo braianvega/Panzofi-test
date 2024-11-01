@@ -1,28 +1,16 @@
-import Image from "next/image"
-import { MdOutlineDateRange } from "react-icons/md"
 import { Dropdown } from "../dropdown/Dropdown"
 import { SidebarItem } from "./SidebarItem"
 import { UserPresentation } from "@/components/user/UserPresentation"
 import { UserIndicators } from "@/components/user/UserIndicators"
+import Link from "next/link"
 
 const generalDescription = "Esta es una breve descripcion para el dropdown con titulo "
-const generalParragraphLink = "Esta es una breve descripcion para la viñeta con link "
 const dropdownRulesInfo = [
-    {
-        title: "1. Keep submissions on topic and of high quality",
-    },
-    {
-        title: "2. No surveys",
-    },
-    {
-        title: "3. No résumés/job listings",
-    },
-    {
-        title: "4. /r/programming is not support forum",
-    },
-    {
-        title: "5. Spam",
-    }
+    "1. Keep submissions on topic and of high quality",
+    "2. No surveys",
+    "3. No résumés/job listings",
+    "4. /r/programming is not support forum",
+    "5. Spam",
 ]
 
 export const Sidebar = () => {
@@ -35,8 +23,8 @@ export const Sidebar = () => {
                 <hr className="mb-3 mx-4" />
 
                 {/* user indicators */}
-                <UserIndicators /> 
-                
+                <UserIndicators />
+
                 <hr className="mb-3 mx-4" />
                 <div className="flex mb-3">
                     <button className=" w-full mx-3 rounded-xl p-2 bg-orange-600 font-semibold text-sm  ">
@@ -53,7 +41,7 @@ export const Sidebar = () => {
                 <div className="py-2">
                     {
                         dropdownRulesInfo.map(rule =>
-                            <Dropdown title={rule.title} description={generalDescription} />
+                            <Dropdown title={rule} key={rule} description={generalDescription} />
                         )
                     }
                 </div>
@@ -67,7 +55,7 @@ export const Sidebar = () => {
                                 <li key={i} className="p-1 text-sm">
                                     <p className="flex">
                                         {"Do you have a question? Check out"}
-                                        <a className="text-orange-600 underline" href={'/'}>link</a>
+                                        <Link className="text-orange-600 underline" href={'/'}>link</Link>
                                     </p>
                                 </li>
                             )
@@ -79,7 +67,7 @@ export const Sidebar = () => {
                         {
                             Array(6).fill(0).map((x, i) =>
                                 <li key={i} className="p-1 text-sm">
-                                    <p className="flex"><a className="text-orange-600 underline" href={'/'}>link</a></p>
+                                    <Link className="text-orange-600 underline" href={'/'}>Link</Link>
                                 </li>
                             )
                         }

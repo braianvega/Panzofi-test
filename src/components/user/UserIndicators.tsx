@@ -1,6 +1,6 @@
 export const UserIndicators = () => {
     return (
-        <div className="grid grid-cols-3 ml-4 text-gray-800 font-sans mb-3">
+        <div className="flex ml-4 gap-9 text-gray-800 font-sans mb-3">
             <div>
                 <span className="font-semibold">5.7m</span>
                 <p className="text-sm">Members</p>
