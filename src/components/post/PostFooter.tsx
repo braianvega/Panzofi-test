@@ -5,7 +5,7 @@ import { VscBookmark, VscComment, VscEllipsis } from 'react-icons/vsc'
 
 export const PostFooter = () => {
     return (
-        <div className="flex justify-between w-full">
+        <div className="flex justify-between w-full mt-10">
             <div className="flex gap-4">
                 <span className="flex gap-2">
                     <VscComment size={25} />
