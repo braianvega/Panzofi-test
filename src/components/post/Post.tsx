@@ -9,6 +9,7 @@ import { VscBookmark, VscComment, VscEllipsis } from "react-icons/vsc"
 import { PostHeader } from "./PostHeader"
 import { PostBody } from "./PostBody"
 import { PostFooter } from "./PostFooter"
+import { TextArea } from "../ui/text-area/TextAreaPost"
 
 export const Post = () => {
     return (
@@ -30,6 +31,12 @@ export const Post = () => {
 
                 {/* post Footer */}
                 <PostFooter />
+
+                {/* User comment text */}
+                <p className=" font-sans text-gray-600">
+                    {"Comment as "} <Link className="text-orange-600" href={'/'}>Wonderful-External22</Link>
+                </p>
+                <TextArea isComment={true} />
 
             </div>
 
