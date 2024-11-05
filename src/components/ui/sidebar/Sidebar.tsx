@@ -1,3 +1,5 @@
+
+import { redirect } from "next/navigation"
 import { Dropdown } from "../dropdown/Dropdown"
 import { SidebarItem } from "./SidebarItem"
 import { UserPresentation } from "@/components/user/UserPresentation"
@@ -40,8 +42,10 @@ export const Sidebar = () => {
 
                 <hr className="mb-3 mx-4" />
                 <div className="flex mb-3">
-                    <button className=" w-full mx-3 rounded-xl p-2 bg-orange-600 font-semibold text-sm  ">
-                        Join
+                    <button
+                        className=" w-full mx-3 rounded-xl p-2 bg-orange-600 font-semibold text-sm"
+                        onClick={()=>redirect('/login')}>
+                        Seleccionar usuario
                     </button>
                 </div>
                 <hr className="mb-3 mx-4" />
@@ -79,7 +83,7 @@ export const Sidebar = () => {
                     <hr className="m-4" />
                     <h3 className="font-bold text-gray-700 text-xs mx-3 mb-2">Related reddits</h3>
                     <ol className="text-gray-600 font-sans mx-8 list-disc">
-                        <li  className="p-1 text-sm">
+                        <li className="p-1 text-sm">
                             <Link className="text-orange-600 underline" href={'/'}>Link</Link>
                         </li>
 

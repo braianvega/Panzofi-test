@@ -51,7 +51,7 @@ export const Comment = ({ comment }: Props) => {
                     height={50}
                     className="rounded-full" />
                 <span className="font-sans font-bold text-gray-700">
-                    {comment.author.name}
+                    {comment.author.username}
                 </span>
                 <p className="font-sans text-gray-500">
                     {comment.created_at}

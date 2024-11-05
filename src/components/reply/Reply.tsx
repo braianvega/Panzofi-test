@@ -20,7 +20,7 @@ export const Reply = ({reply}:Props) => {
                     height={50}
                     className="rounded-full" />
                 <span className="font-sans font-bold text-gray-700">
-                    {reply.author.name}
+                    {reply.author.username}
                 </span>
                 <p className="font-sans text-gray-500">
                     {reply.created_at}
