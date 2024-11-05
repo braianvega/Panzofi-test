@@ -21,7 +21,7 @@ export default async function Home() {
     return (
         <div className="min-h-screen bg-teal-950">
             <div className="pt-44">
-                <h1 className="text-5xl text-center">Seleciona un usuario</h1>
+                <h1 className="text-5xl text-center">Seleciona un autor</h1>
             </div>
             <div className="flex mt-8 justify-center space-x-5">
                 {users.map(user =>

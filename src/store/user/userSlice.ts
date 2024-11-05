@@ -11,7 +11,7 @@ const getInitialState = () => {
 
     const userAuthor = {
         "id": 2,
-        "username": "Aleksei Sytsevich",
+        "username": "Aleksei_Sytsevich",
         "name": "Rhino",
         "userUrlImage": "https://wallpapers-clan.com/wp-content/uploads/2022/02/60s-spider-man-funny-pfp-34.jpg",
         "created_at": "2024-11-03T21:17:23.933530Z"

@@ -65,7 +65,7 @@ export const Comment = ({ comment }: Props) => {
                     <div className="flex gap-4 text-gray-500 items-center font-semibold">
                         <span className="flex gap-1 items-center">
                             <PiArrowFatDownLight size={25} />
-                            <span className="text-center text-gray-600">123</span>
+                            <span className="text-center text-gray-600">{comment.replies.length}</span>
                             <PiArrowFatUpLight size={25} />
                         </span>
                         <span

@@ -13,19 +13,11 @@ export interface Author {
     created_at: string;
 }
 
-export interface ReReply {
-    id: number;
-    textContent: string;
-    author: Author;
-    created_at: string;
-}
-
 export interface Reply {
     id: number;
     textContent: string;
     author: Author;
     created_at: string;
-    rereplies: ReReply[];
 }
 
 export interface Comment {

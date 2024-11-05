@@ -1,6 +1,7 @@
 
-import { redirect } from "next/navigation"
+
 import { Dropdown } from "../dropdown/Dropdown"
+import { ButtonRedirect } from "./ButtonRedirect"
 import { SidebarItem } from "./SidebarItem"
 import { UserPresentation } from "@/components/user/UserPresentation"
 import Link from "next/link"
@@ -41,13 +42,7 @@ export const Sidebar = () => {
                 </div>
 
                 <hr className="mb-3 mx-4" />
-                <div className="flex mb-3">
-                    <button
-                        className=" w-full mx-3 rounded-xl p-2 bg-orange-600 font-semibold text-sm"
-                        onClick={()=>redirect('/login')}>
-                        Seleccionar usuario
-                    </button>
-                </div>
+                <ButtonRedirect />
                 <hr className="mb-3 mx-4" />
                 <div>
                     <Dropdown description={generalDescription} title="Community options" />
