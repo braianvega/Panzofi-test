@@ -1,0 +1,1 @@
+export {UserRounded} from '@/app/login/components/user-rounded/UserRounded'

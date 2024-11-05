@@ -2,35 +2,64 @@
 
 import { PiArrowFatDownLight, PiArrowFatUpLight, PiLinkBold, PiTextAlignCenterLight, PiTextBBold, PiTextItalic, PiTextStrikethroughBold } from "react-icons/pi"
 import { VscComment, VscEllipsis } from "react-icons/vsc"
-import { HeaderCommnent } from "./HeaderComment"
-import { TextArea } from "../ui/text-area/TextAreaPost"
+import Image from "next/image"
+import { Comment as CommentInterface } from "@/interfaces"
+import { Reply } from "../reply/Reply"
 import { FormEvent, useState } from "react"
 import { MdOutlineReportGmailerrorred, MdOutlineTextIncrease } from "react-icons/md"
-import { CommentsGrid } from "../comments/comments-grid/CommentsGrid"
+import { useRouter } from "next/navigation"
+import { useAppSelector } from "@/store"
 
-export const Comment = () => {
+interface Props {
+    comment: CommentInterface
+}
 
-    const [toggleReply, setToggleReply] = useState(false)
+export const Comment = ({ comment }: Props) => {
 
-    const [replayValue, setReplyValue] = useState("")
+    const [toggleState, setToggleState] = useState(false)
+    const [replayValue, setReplayValue] = useState('')
+    const router = useRouter();
+    const userStore = useAppSelector(store =>store.user.userAuthor);
+
     const onSubmit = async (e: FormEvent) => {
-        e.preventDefault();
-        setReplyValue('');
+        const reply = await fetch(`http://localhost:8000/api/v1/reply/`,
+            {
+                method: 'POST',
+                body: JSON.stringify({
+                    textContent: replayValue,
+                    author_id: userStore.id,
+                    comment: comment.id
+                }),
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            }).then(res => res.json())
+        console.log(reply)
+        setReplayValue('');
+        router.refresh()
         console.log(replayValue);
     }
 
-    const onClickCancel=()=>{
-        setReplyValue('');
-        setToggleReply(false);
-    }
-
     return (
-        <div className="w-full ">
+        <div className="w-full ml-2">
             {/* title user */}
-            <HeaderCommnent />
+            <div className="flex items-center space-x-2">
+                <Image
+                    src={comment.author.userUrlImage}
+                    alt="user Image"
+                    width={50}
+                    height={50}
+                    className="rounded-full" />
+                <span className="font-sans font-bold text-gray-700">
+                    {comment.author.name}
+                </span>
+                <p className="font-sans text-gray-500">
+                    {comment.created_at}
+                </p>
+            </div>
             <div className="w-full mx-6 border-gray-200 border-l-2 py-1">
                 <p className=" mx-6 font-sans text-gray-500">
-                    "tesd"
+                    {comment.textContent}
                 </p>
                 <div className="grid grap-3 mt-3 px-6">
                     <div className="flex gap-4 text-gray-500 items-center font-semibold">
@@ -40,7 +69,7 @@ export const Comment = () => {
                             <PiArrowFatUpLight size={25} />
                         </span>
                         <span
-                            onClick={() => setToggleReply(true)}
+                            onClick={() => setToggleState(true)}
                             className="flex gap-2 text-sm items-center cursor-pointer">
                             <VscComment size={25} />
                             <p>Reply</p>
@@ -49,7 +78,7 @@ export const Comment = () => {
                         <VscEllipsis size={25} />
                     </div>
                     {
-                        toggleReply &&
+                        toggleState &&
                         <div className="border-gray-200 border-l-2 mt-6 px-6">
                             <form className="grid rounded-md border-gray-300 border text-gray-500 mr-16">
 
@@ -58,7 +87,7 @@ export const Comment = () => {
                                     name="comment"
                                     id="comment"
                                     value={replayValue}
-                                    onChange={(e) => setReplyValue(e.target.value)}
+                                    onChange={(e) => setReplayValue(e.target.value)}
                                     rows={6}
                                     placeholder="What are your thoughts?" />
 
@@ -78,7 +107,7 @@ export const Comment = () => {
 
                                         <span className="font-semibold text-orange-600 text-sm">Markdown Mode</span>
                                         <span
-                                            onClick={() => onClickCancel()}
+                                            onClick={() => setToggleState(false)}
                                             className="font-semibold text-orange-600 text-sm cursor-pointer">
                                             Cancel
                                         </span>
@@ -100,6 +129,13 @@ export const Comment = () => {
                             </form>
                         </div>
                     }
+                    <div className="grid gap-4 mt-5">
+                        {
+                            comment.replies.map(reply =>
+                                <Reply key={comment.id} reply={reply} />
+                            )
+                        }
+                    </div>
                 </div>
             </div>
         </div>

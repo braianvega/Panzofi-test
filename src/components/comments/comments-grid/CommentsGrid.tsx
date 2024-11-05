@@ -1,7 +1,13 @@
+/* eslint-disable */
 import { IoSearch } from "react-icons/io5"
 import { Comment } from "../../comment/Comment"
 
-export const CommentsGrid = () => {
+interface Props {
+  comments: any[]
+}
+
+export const CommentsGrid = ({ comments }: Props) => {
+  console.log(comments)
   return (
     <div className="grid w-full">
       {/* Header Filter */}
@@ -26,10 +32,9 @@ export const CommentsGrid = () => {
         <span className="text-orange-600 text-sm font-semibold">View discussions in 1 other community</span>
       </div>
       <div className="grid mt-8">
-        <Comment />
-        <Comment />
-        <Comment />
-        <Comment />
+        {comments.map((comment,i) =>
+          <Comment key={i} comment={comment} />
+        )}
       </div>
     </div>
   )
