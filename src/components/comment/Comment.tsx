@@ -22,7 +22,8 @@ export const Comment = ({ comment }: Props) => {
     const userStore = useAppSelector(store =>store.user.userAuthor);
 
     const onSubmit = async (e: FormEvent) => {
-        const reply = await fetch(`http://localhost:8000/api/v1/reply/`,
+        e.preventDefault(); 
+        await fetch(`http://localhost:8000/api/v1/reply/`,
             {
                 method: 'POST',
                 body: JSON.stringify({
@@ -34,10 +35,9 @@ export const Comment = ({ comment }: Props) => {
                     'Content-type': 'application/json'
                 }
             }).then(res => res.json())
-        console.log(reply)
         setReplayValue('');
+        setToggleState(false)
         router.refresh()
-        console.log(replayValue);
     }
 
     return (
@@ -131,8 +131,8 @@ export const Comment = ({ comment }: Props) => {
                     }
                     <div className="grid gap-4 mt-5">
                         {
-                            comment.replies.map(reply =>
-                                <Reply key={comment.id} reply={reply} />
+                            comment.replies.map((reply,i) =>
+                                <Reply key={`reply-${i}`} reply={reply} />
                             )
                         }
                     </div>

@@ -1,6 +1,3 @@
-/* eslint-disable */
-
-
 import Link from "next/link"
 import { TbArrowBigDown, TbArrowBigUp } from "react-icons/tb"
 import { PostFooter } from "./PostFooter"

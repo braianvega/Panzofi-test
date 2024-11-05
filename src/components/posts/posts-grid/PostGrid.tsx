@@ -16,16 +16,14 @@ export const PostGrid = async () => {
 
   return (
     <div className="grid gap-4 min-h-fit">
-      {
-        posts.map(post =>
-          <div key={post.id}>
-            <Post key={post.id} post={post} />
-            {post.comments&&
-            <CommentsGrid key={post.id} comments={post.comments}/>
-            }
-          </div>
-        )
-      }
+      {posts.map((post, index) => (
+        <div key={`post-container-${index}`}>
+          <Post key={`post-${index}`} post={post} />
+          {post.comments && (
+            <CommentsGrid key={`comments-grid-${index}`} comments={post.comments} />
+          )}
+        </div>
+      ))}
     </div>
   )
 }

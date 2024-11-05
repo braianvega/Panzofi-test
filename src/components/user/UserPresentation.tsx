@@ -1,4 +1,4 @@
-/* eslint-disable */ 
+
 'use client'
 import Image from "next/image"
 import { MdOutlineDateRange } from "react-icons/md"
@@ -33,7 +33,7 @@ export const UserPresentation = () => {
                     <MdOutlineDateRange className="text-gray-700" size={27} />
                     
                     <span className="ml-2 font-sans text-gray-500">
-                    { JSON.stringify(userStore.created_at)}
+                    { userStore.created_at}
                     </span>
                 </div>
             </div>

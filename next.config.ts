@@ -10,8 +10,8 @@ const nextConfig: NextConfig = {
         hostname: 'wallpapers-clan.com'
       },
     ]
-  }
-
+  },
 };
+
 
 export default nextConfig;

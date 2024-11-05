@@ -1,9 +1,10 @@
-/* eslint-disable */
 import { IoSearch } from "react-icons/io5"
-import { Comment } from "../../comment/Comment"
+import { Comment as commentInterface} from "@/interfaces"
+import { Comment } from "@/components/comment/Comment"
+import { randomUUID } from "crypto"
 
 interface Props {
-  comments: any[]
+  comments: commentInterface[]
 }
 
 export const CommentsGrid = ({ comments }: Props) => {
@@ -32,8 +33,8 @@ export const CommentsGrid = ({ comments }: Props) => {
         <span className="text-orange-600 text-sm font-semibold">View discussions in 1 other community</span>
       </div>
       <div className="grid mt-8">
-        {comments.map((comment,i) =>
-          <Comment key={i} comment={comment} />
+        {comments.map((comment,i)=>
+          <Comment key={`comment-${i}`} comment={comment} />
         )}
       </div>
     </div>
