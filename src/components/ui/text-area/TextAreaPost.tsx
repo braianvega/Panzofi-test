@@ -35,10 +35,8 @@ export const TextArea = ({idPost}:Props) => {
           'Content-type': 'application/json'
         }
       }).then(res => res.json())
-    console.log(Comment)
     setCommentValue('');
     router.refresh()
-    console.log(commentValue);
   }
 
   return (

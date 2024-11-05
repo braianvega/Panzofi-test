@@ -9,7 +9,6 @@ export const UserPresentation = () => {
 
     const userStore = useAppSelector(store =>store.user.userAuthor);
 
-    console.log(userStore)
 
     return (
         <>

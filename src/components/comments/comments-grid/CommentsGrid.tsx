@@ -8,7 +8,6 @@ interface Props {
 }
 
 export const CommentsGrid = ({ comments }: Props) => {
-  console.log(comments)
   return (
     <div className="grid w-full">
       {/* Header Filter */}

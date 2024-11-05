@@ -10,7 +10,6 @@ const getUsers = async () => {
             }
           })
         .then(res => res.json())
-    console.log(data)
     return data;
 }
 
